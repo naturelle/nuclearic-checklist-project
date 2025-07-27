@@ -31,3 +31,9 @@ The project is built on a modern and scalable architecture:
 This guide provides a detailed roadmap for developing the project's backend and frontend, including Docker containerization and CI/CD automation.
 
 <img width="2267" height="750" alt="image" src="https://github.com/user-attachments/assets/b523e34b-ef1b-4137-b727-6841673d9f4b" />
+
+<img width="2367" height="1155" alt="image" src="https://github.com/user-attachments/assets/3201391f-ec68-42e3-aa23-8246629d3a91" />
+
+<img width="2260" height="815" alt="image" src="https://github.com/user-attachments/assets/d5b52756-b6f4-4e21-a851-a572b95348ac" />
+
+
