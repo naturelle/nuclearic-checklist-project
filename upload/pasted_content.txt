@@ -1,0 +1,204 @@
+# VVER-1200 Diverse Protection System (DPS) Review Checklist
+
+## 1. SYSTEM ARCHITECTURE AND DESIGN PRINCIPLES
+
+### 1.1 Independence and Separation (IEC 61513, SSG-39)
+- [ ] **Physical Separation**: DPS equipment physically separated from main safety systems (minimum distances per SSG-39)
+- [ ] **Electrical Independence**: Independent power supplies, no shared electrical connections with main protection systems
+- [ ] **Functional Independence**: DPS performs protection functions independently without reliance on main systems
+- [ ] **Communication Independence**: No data communication between DPS and main safety systems during accident conditions
+- [ ] **Environmental Separation**: Different environmental zones or adequate barriers between systems
+
+### 1.2 Diversity Implementation (IAEA SSG-39, IEC 61513)
+- [ ] **Design Diversity**: Different design approaches from main protection system
+- [ ] **Equipment Diversity**: Different manufacturers, hardware platforms, or technologies
+- [ ] **Software Diversity**: Different programming languages, compilers, operating systems if applicable
+- [ ] **Functional Diversity**: Different algorithms and logic implementation
+- [ ] **Signal Diversity**: Use of different parameters or measurement principles where feasible
+- [ ] **Human Diversity**: Different design teams, verification teams
+
+### 1.3 Simplicity Requirements (SSG-39)
+- [ ] **Simplified Logic**: DPS logic simpler than main protection system
+- [ ] **Reduced Complexity**: Fewer functions and interactions compared to main systems
+- [ ] **Transparent Operation**: Easy to understand and verify system behavior
+- [ ] **Minimal Software**: Reduced software complexity or hardwired solutions where possible
+
+## 2. FUNCTIONAL REQUIREMENTS
+
+### 2.1 Protection Functions Coverage
+- [ ] **Reactor Trip Functions**: 
+  - High neutron flux (power range)
+  - High reactor coolant pressure
+  - Low steam generator water level
+  - High pressurizer water level
+  - Manual reactor trip
+- [ ] **ECCS Actuation Functions**:
+  - Low reactor coolant pressure
+  - High containment pressure
+  - Low steam generator water level coincident with low Tcold
+- [ ] **Containment Isolation Functions**:
+  - High containment pressure
+  - High containment radiation
+  - Manual isolation signals
+
+### 2.2 Actuation Logic and Timing (IEC 61513)
+- [ ] **Response Time**: DPS response times documented and adequate for safety functions
+- [ ] **Logic Matrices**: 2-out-of-4 or appropriate voting logic for safety functions
+- [ ] **Coincidence Logic**: Proper implementation of coincidence requirements
+- [ ] **Bypass and Test**: Capability for testing without compromising safety functions
+- [ ] **Manual Initiation**: Manual actuation capability independent of automatic functions
+
+## 3. HARDWARE REQUIREMENTS
+
+### 3.1 Qualification and Environmental (IEC 60880, SSG-39)
+- [ ] **Seismic Qualification**: Equipment qualified for design basis earthquake
+- [ ] **Environmental Qualification**: Temperature, humidity, radiation, EMI/RFI qualification
+- [ ] **Aging Qualification**: Equipment qualified for design life under environmental conditions
+- [ ] **Fire Protection**: Fire barriers and protection equivalent to main safety systems
+- [ ] **Flood Protection**: Protection against internal flooding events
+
+### 3.2 Reliability and Availability
+- [ ] **Single Failure Criterion**: No single failure prevents DPS from performing safety functions
+- [ ] **Redundancy**: Appropriate level of redundancy (typically 2x100% or 4x25%)
+- [ ] **Periodic Testing**: Capability for on-line testing without compromising availability
+- [ ] **Maintenance**: Maintenance can be performed without degrading safety functions
+- [ ] **Common Cause Failures**: Analysis and mitigation of common cause failure potential
+
+### 3.3 Power Supply Systems
+- [ ] **Independent Power**: Class 1E power supplies independent from main protection systems
+- [ ] **Battery Backup**: Uninterruptible power supply with adequate capacity
+- [ ] **Diverse Power Sources**: Different power sources or distribution paths where feasible
+- [ ] **Power Supply Monitoring**: Monitoring and alarm for power supply status
+
+## 4. SOFTWARE REQUIREMENTS (IEC 60880, IEC 61513)
+
+### 4.1 Software Development Process
+- [ ] **Life Cycle Model**: Appropriate software life cycle model implemented (V-model preferred)
+- [ ] **Quality Assurance**: Software QA program meeting IEC 60880 requirements
+- [ ] **Configuration Management**: Rigorous configuration control throughout development
+- [ ] **Documentation**: Complete documentation of software requirements, design, and testing
+- [ ] **Traceability**: Requirements traceability through all development phases
+
+### 4.2 Software Verification and Validation
+- [ ] **Static Analysis**: Code review, static analysis tools, complexity analysis
+- [ ] **Dynamic Testing**: Unit testing, integration testing, system testing
+- [ ] **Formal Methods**: Use of formal verification methods where applicable
+- [ ] **Independent V&V**: Independent verification and validation activities
+- [ ] **Test Coverage**: Adequate test coverage of code and requirements
+
+### 4.3 Software Design Principles
+- [ ] **Structured Programming**: Use of structured programming techniques
+- [ ] **Defensive Programming**: Implementation of defensive programming practices
+- [ ] **Error Handling**: Comprehensive error detection and handling
+- [ ] **Fail-Safe Design**: Software fails to safe state upon detection of errors
+- [ ] **Prohibited Constructs**: Avoidance of dynamic memory allocation, recursion, interrupts
+
+## 5. HUMAN FACTORS AND INTERFACES
+
+### 5.1 Control Room Interface
+- [ ] **Dedicated Displays**: DPS status displays separate from main control systems
+- [ ] **Clear Indication**: Clear indication of DPS system status and actuations
+- [ ] **Manual Controls**: Manual actuation controls clearly identified and protected
+- [ ] **Alarm Systems**: Appropriate alarms for DPS malfunctions and actuations
+- [ ] **Procedure Integration**: Emergency procedures include DPS operation
+
+### 5.2 Operator Interface Design
+- [ ] **Human Factors Engineering**: Interface design follows human factors principles
+- [ ] **Information Display**: Critical information displayed clearly and unambiguously
+- [ ] **Control Accessibility**: Manual controls accessible during emergency conditions
+- [ ] **Training Requirements**: Operator training program includes DPS operation
+
+## 6. TESTING AND COMMISSIONING
+
+### 6.1 Factory Testing
+- [ ] **Factory Acceptance Testing**: Complete FAT program per specifications
+- [ ] **Type Testing**: Representative type testing of hardware and software
+- [ ] **Environmental Testing**: Testing under simulated plant environmental conditions
+- [ ] **Interface Testing**: Testing of interfaces with plant systems
+- [ ] **Performance Testing**: Verification of response times and functional performance
+
+### 6.2 Site Testing and Commissioning
+- [ ] **Pre-operational Testing**: Comprehensive testing before fuel loading
+- [ ] **Integrated System Testing**: Testing with actual plant systems and conditions
+- [ ] **Surveillance Testing**: Periodic testing program during plant operation
+- [ ] **Post-Maintenance Testing**: Testing after maintenance activities
+- [ ] **Calibration Program**: Regular calibration of instrumentation channels
+
+## 7. DOCUMENTATION AND PROCEDURES
+
+### 7.1 Design Documentation
+- [ ] **System Description**: Complete system description and design basis
+- [ ] **Interface Control Documents**: Documentation of all system interfaces
+- [ ] **Safety Analysis**: Safety analysis including failure modes and effects
+- [ ] **Diversity Analysis**: Analysis demonstrating adequate diversity from main systems
+- [ ] **Test Procedures**: Complete test procedures for all testing phases
+
+### 7.2 Operating Documentation
+- [ ] **Operating Procedures**: Normal operating procedures for DPS
+- [ ] **Emergency Procedures**: Integration with emergency operating procedures
+- [ ] **Maintenance Procedures**: Detailed maintenance and calibration procedures
+- [ ] **Training Materials**: Operator and maintenance training materials
+- [ ] **Technical Specifications**: Plant technical specifications including DPS requirements
+
+## 8. REGULATORY COMPLIANCE
+
+### 8.1 Licensing Requirements
+- [ ] **Safety Analysis Report**: DPS described in plant safety analysis report
+- [ ] **Regulatory Approval**: Design approved by relevant nuclear regulatory authority
+- [ ] **International Standards**: Compliance with applicable IAEA and IEC standards
+- [ ] **Country-Specific Requirements**: Compliance with national regulatory requirements
+- [ ] **Design Changes**: Process for managing design changes and regulatory approval
+
+### 8.2 Quality Assurance
+- [ ] **QA Program**: Nuclear quality assurance program applied to DPS
+- [ ] **Supplier QA**: Quality assurance requirements for suppliers and subcontractors
+- [ ] **Document Control**: Controlled distribution and revision of design documents
+- [ ] **Records Management**: Appropriate records retention for safety-related equipment
+- [ ] **Audit Program**: Regular audits of DPS design, manufacturing, and operation
+
+## 9. MAINTENANCE AND SURVEILLANCE
+
+### 9.1 Surveillance Program
+- [ ] **Periodic Testing**: Regular functional testing of DPS systems
+- [ ] **Calibration**: Periodic calibration of instrumentation channels
+- [ ] **Component Testing**: Testing of individual components and subsystems
+- [ ] **Integrated Testing**: Periodic testing of complete protection functions
+- [ ] **Test Documentation**: Proper documentation of all surveillance activities
+
+### 9.2 Maintenance Program
+- [ ] **Preventive Maintenance**: Scheduled preventive maintenance program
+- [ ] **Corrective Maintenance**: Procedures for corrective maintenance activities
+- [ ] **Spare Parts**: Adequate spare parts inventory for critical components
+- [ ] **Qualified Personnel**: Maintenance performed by qualified personnel
+- [ ] **Post-Maintenance Testing**: Testing after maintenance to verify proper operation
+
+## 10. CYBERSECURITY (Modern Addition to Classical Standards)
+
+### 10.1 Cybersecurity Architecture
+- [ ] **Network Isolation**: DPS networks isolated from plant business networks
+- [ ] **Access Control**: Physical and logical access controls implemented
+- [ ] **Security Monitoring**: Monitoring for cybersecurity events and anomalies
+- [ ] **Secure Communications**: Encrypted communications where external connections exist
+- [ ] **Vulnerability Management**: Process for identifying and addressing vulnerabilities
+
+---
+
+## REVIEW COMPLETION CHECKLIST
+
+### Documentation Review
+- [ ] All technical documents reviewed and approved
+- [ ] Design changes properly documented and approved
+- [ ] Test results documented and meet acceptance criteria
+- [ ] Regulatory submissions complete and approved
+- [ ] Quality assurance records complete
+
+### System Readiness
+- [ ] All systems installed and tested per specifications
+- [ ] Personnel trained on DPS operation and maintenance
+- [ ] Procedures validated and approved for use
+- [ ] Spare parts and maintenance equipment available
+- [ ] Surveillance program ready for implementation
+
+**Reviewer**: _________________ **Date**: ___________ **Signature**: _______________
+
+**Review Status**: ☐ Complete ☐ Complete with Comments ☐ Incomplete - Action Required
