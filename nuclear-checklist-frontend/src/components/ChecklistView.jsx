@@ -26,10 +26,23 @@ export function ChecklistView() {
   const [selectedSubCategory, setSelectedSubCategory] = useState('')
   const [statusFilter, setStatusFilter] = useState('')
 
+  // --- Move filteredItems declaration here ---
+  const filteredItems = items.filter(item =>
+    item.item_text.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    item.category.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    item.sub_category.toLowerCase().includes(searchTerm.toLowerCase())
+  )
+  // ------------------------------------------
+
   useEffect(() => {
     fetchCategories()
     fetchItems()
   }, [])
+
+  useEffect(() => {
+    console.log("Current items state:", items); // Debug log
+    console.log("Current filteredItems state:", filteredItems); // Debug log (now accessible)
+  }, [items, filteredItems]); // This useEffect is now safe
 
   useEffect(() => {
     if (selectedCategory) {
@@ -102,12 +115,6 @@ export function ChecklistView() {
     }
   }
 
-  const filteredItems = items.filter(item =>
-    item.item_text.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    item.category.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    item.sub_category.toLowerCase().includes(searchTerm.toLowerCase())
-  )
-
   const clearFilters = () => {
     setSelectedCategory('')
     setSelectedSubCategory('')
@@ -151,63 +158,66 @@ export function ChecklistView() {
                 />
               </div>
             </div>
+</div>
+           // ... (Your existing imports and state declarations)
 
-            {/* Kategori */}
-            <div className="space-y-2">
-              <label className="text-sm font-medium">Kategori</label>
-              <Select value={selectedCategory} onValueChange={setSelectedCategory}>
-                <SelectTrigger>
-                  <SelectValue placeholder="Kategori seçin" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="">Tümü</SelectItem>
-                  {categories.map((category) => (
-                    <SelectItem key={category} value={category}>
-                      {category}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </div>
+{/* Kategori */}
+<div className="space-y-2">
+  <label className="text-sm font-medium">Kategori</label>
+  <Select value={selectedCategory} onValueChange={setSelectedCategory}>
+    <SelectTrigger>
+      <SelectValue placeholder="Kategori seçin" />
+    </SelectTrigger>
+    <SelectContent>
+      {/* Change value="" to a unique non-empty string like "all-categories" */}
+      <SelectItem value="all-categories">Tümü</SelectItem> 
+      {categories.map((category) => (
+        <SelectItem key={category} value={category}>
+          {category}
+        </SelectItem>
+      ))}
+    </SelectContent>
+  </Select>
+</div>
 
-            {/* Alt Kategori */}
-            <div className="space-y-2">
-              <label className="text-sm font-medium">Alt Kategori</label>
-              <Select 
-                value={selectedSubCategory} 
-                onValueChange={setSelectedSubCategory}
-                disabled={!selectedCategory}
-              >
-                <SelectTrigger>
-                  <SelectValue placeholder="Alt kategori seçin" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="">Tümü</SelectItem>
-                  {subCategories.map((subCategory) => (
-                    <SelectItem key={subCategory} value={subCategory}>
-                      {subCategory}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </div>
+{/* Alt Kategori */}
+<div className="space-y-2">
+  <label className="text-sm font-medium">Alt Kategori</label>
+  <Select 
+    value={selectedSubCategory} 
+    onValueChange={setSelectedSubCategory}
+    disabled={!selectedCategory}
+  >
+    <SelectTrigger>
+      <SelectValue placeholder="Alt kategori seçin" />
+    </SelectTrigger>
+    <SelectContent>
+      {/* Change value="" to a unique non-empty string like "all-subcategories" */}
+      <SelectItem value="all-subcategories">Tümü</SelectItem> 
+      {subCategories.map((subCategory) => (
+        <SelectItem key={subCategory} value={subCategory}>
+          {subCategory}
+        </SelectItem>
+      ))}
+    </SelectContent>
+  </Select>
+</div>
 
-            {/* Durum */}
-            <div className="space-y-2">
-              <label className="text-sm font-medium">Durum</label>
-              <Select value={statusFilter} onValueChange={setStatusFilter}>
-                <SelectTrigger>
-                  <SelectValue placeholder="Durum seçin" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="">Tümü</SelectItem>
-                  <SelectItem value="true">Tamamlanan</SelectItem>
-                  <SelectItem value="false">Bekleyen</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-          </div>
-
+{/* Durum */}
+<div className="space-y-2">
+  <label className="text-sm font-medium">Durum</label>
+  <Select value={statusFilter} onValueChange={setStatusFilter}>
+    <SelectTrigger>
+      <SelectValue placeholder="Durum seçin" />
+    </SelectTrigger>
+    <SelectContent>
+      {/* Change value="" to a unique non-empty string like "all-statuses" */}
+      <SelectItem value="all-statuses">Tümü</SelectItem> 
+      <SelectItem value="true">Tamamlanan</SelectItem>
+      <SelectItem value="false">Bekleyen</SelectItem>
+    </SelectContent>
+  </Select>
+</div>
           <div className="flex justify-between items-center">
             <div className="text-sm text-muted-foreground">
               {filteredItems.length} madde gösteriliyor
@@ -307,4 +317,3 @@ export function ChecklistView() {
     </div>
   )
 }
-
